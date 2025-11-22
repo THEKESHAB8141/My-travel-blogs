@@ -1,37 +1,37 @@
-# Northeast Explorer — Full Website (Static)
+# Northeast Explorer — Demo Travel Website (With Itineraries & Pricing)
 
-This package contains a full static single-page website for a boutique travel company focusing on Northeast India.
+This project now includes a simple price calculator and itinerary examples.
 
-## What's included
-- `index.html`
-- `css/styles.css`
-- `js/script.js`
-- `assets/images/` — placeholder images (SVG)
-- `.github/workflows/deploy-netlify.yml` — GitHub Actions workflow to deploy to Netlify
-- `netlify.toml` — Netlify config
-- `README.md`
+## Itineraries & Pricing
+- Each itinerary lists an indicative **per-person** price (INR).
+- The Price Calculator lets visitors:
+  - Choose an itinerary
+  - Select number of travellers
+  - Toggle currency (INR / USD - illustrative rate)
+  - See taxes (GST 5%) and automatic group discounts (5% for 4-5 travellers, 10% for 6+)
+- Clicking **Add to booking** copies the selected itinerary and calculated total into hidden fields on the booking form. When the visitor submits the booking form, Netlify Forms captures the itinerary and the estimated total.
 
-## How to use
-1. Unzip and open `index.html` or run a local server:
-   ```bash
-   python -m http.server 8000
-   # open http://localhost:8000
-   ```
+## Payments & confirmation
+This demo does *not* perform payments. To accept payments online, integrate a payment gateway:
+- Stripe Checkout (recommended): create a serverless endpoint to create a Checkout Session and redirect the user to Stripe.
+- PayPal Buttons or PayPal Checkout.
+- Razorpay (India-specific) with server-side order creation.
 
-2. Replace placeholder images in `assets/images/` with your photos (recommended sizes: 1200–1600px wide; optimized JPGs).
+### Quick Stripe integration outline
+1. Create a serverless function (Netlify Function) that calls Stripe's API to create a Checkout Session.
+2. From the client, POST itinerary and traveller details to that function to get a session ID.
+3. Redirect the user to `stripe.redirectToCheckout({ sessionId })`.
+4. Use webhooks to confirm payment and mark booking as paid in your backend.
 
-3. To publish:
-   - Option A: Netlify — create a site and drag-drop folder, or use Netlify CLI.
-   - Option B: GitHub Pages — push to a repository and enable Pages.
+If you want, I can add a sample Netlify Function for Stripe (requires your Stripe secret key in Netlify environment variables). I can also wire a "Pay now" button that calls the function and redirects to Stripe Checkout.
 
-## Deployment with Netlify CLI
-```bash
-npm i -g netlify-cli
-netlify deploy --dir=. --auth $NETLIFY_AUTH_TOKEN
-# copy draft URL, then:
-netlify deploy --dir=. --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID
-```
+## Deploy
+Deploy exactly like before to Netlify. Netlify Forms will collect enquiries and include:
+- `selected_itinerary`
+- `calculated_total`
+- `travellers`
+- `name`, `email`, `phone`, `notes`
 
-## GitHub Actions (Netlify) setup
-Add `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` to your repository secrets to enable automatic deploys by the included workflow.
-
+## Customize
+- Replace the sample per-person prices with your real prices.
+- For live currency conversion, query a rates API (e.g., exchangerate.host, fixer.io) from a serverless function.

@@ -3,177 +3,173 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Northeast Explorer — Curated Small-Group Tours</title>
-  <meta name="description" content="Northeast Explorer - boutique small-group tours across Northeast India. Local guides, sustainable itineraries and authentic cultural experiences." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": "Northeast Explorer",
-    "url": "https://northeast-explorer.example",
-    "logo": "https://northeast-explorer.example/assets/images/hero.jpg",
-    "description": "Boutique travel company offering curated small-group tours across Northeast India.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Guwahati",
-      "addressRegion": "Assam",
-      "addressCountry": "IN"
-    },
-    "telephone": "+91-9876543210"
-  }
-  </script>
+  <title>Northeast Explorer — Travel</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" role="banner">
-    <div class="wrap">
-      <a class="brand" href="/" aria-label="Northeast Explorer home">Northeast Explorer</a>
-      <nav id="main-nav" class="nav" role="navigation" aria-label="Main navigation">
-        <a href="#tours">Tours</a>
-        <a href="#about">About</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="#">Northeast Explorer</a>
+      <nav class="nav">
+        <a href="#itineraries">Itineraries</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#booking">Book</a>
       </nav>
-      <button id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle menu">☰</button>
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-    <section class="hero" role="region" aria-label="Northeast Explorer hero" style="background-image:url('assets/images/hero.jpg')">
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="wrap hero-content">
-        <h1>Discover the hidden gems of Northeast India</h1>
-        <p class="lead">Curated small-group tours with expert local guides — immersive, responsible, unforgettable.</p>
-        <div class="hero-ctas">
-          <a class="btn primary" href="#tours">Explore Tours</a>
-          <a class="btn ghost" href="#contact">Request a Quote</a>
-        </div>
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1>Discover remote hills, tea gardens & hidden trails</h1>
+        <p>Curated trips across the Northeast — itineraries, group tours, and tailor-made plans.</p>
+        <a class="cta" href="#itineraries">See itineraries</a>
       </div>
     </section>
 
-    <section id="tours" class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Featured Tours</h2>
-          <p>Handpicked itineraries — nature, culture and local experiences.</p>
+    <section id="itineraries" class="container cards">
+      <h2>Popular Itineraries & Prices</h2>
+      <p class="muted">Prices shown are <strong>per person</strong> and indicative. Use the price calculator below to get a final estimate including taxes and discounts.</p>
+
+      <div class="grid">
+        <article class="card itinerary" data-id="light-trek" data-price-inr="8999">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=60" alt="Light trek"/>
+          <h3>Light Trek — 3 Days / 2 Nights</h3>
+          <p>Guided easy trek, homestay, meals included.</p>
+          <p class="price">From <strong>₹8,999</strong> / person</p>
+          <button class="btn select-itin" data-itin="light-trek">Select</button>
+        </article>
+
+        <article class="card itinerary" data-id="tea-escape" data-price-inr="14999">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=60" alt="Tea garden"/>
+          <h3>Tea Garden Escape — 4 Days / 3 Nights</h3>
+          <p>Estate stays, plantation tour, cultural experiences.</p>
+          <p class="price">From <strong>₹14,999</strong> / person</p>
+          <button class="btn select-itin" data-itin="tea-escape">Select</button>
+        </article>
+
+        <article class="card itinerary" data-id="river-valley" data-price-inr="19999">
+          <img src="https://images.unsplash.com/photo-1519817650390-64a93db511aa?w=800&q=60" alt="River valley"/>
+          <h3>River & Valley Tour — 6 Days / 5 Nights</h3>
+          <p>Comfort hotels, river cruises, day hikes, all breakfasts.</p>
+          <p class="price">From <strong>₹19,999</strong> / person</p>
+          <button class="btn select-itin" data-itin="river-valley">Select</button>
+        </article>
+      </div>
+
+      <div class="price-calculator card" id="priceCalculator" style="margin-top:1rem; padding:1rem;">
+        <h3>Price Calculator</h3>
+        <div class="form-grid">
+          <label>
+            Itinerary
+            <select id="calcItin">
+              <option value="">Select an itinerary</option>
+              <option value="light-trek">Light Trek — ₹8,999</option>
+              <option value="tea-escape">Tea Garden Escape — ₹14,999</option>
+              <option value="river-valley">River & Valley Tour — ₹19,999</option>
+            </select>
+          </label>
+          <label>
+            Number of travellers
+            <input type="number" id="travellers" min="1" value="2" />
+          </label>
+          <label>
+            Currency
+            <select id="currency">
+              <option value="INR">INR (₹)</option>
+              <option value="USD">USD ($)</option>
+            </select>
+          </label>
         </div>
 
-        <div class="grid" role="list">
-          <article class="card" role="listitem" aria-labelledby="tour-1-title">
-            <img src="assets/images/tour-meghalaya.jpg" alt="Living root bridges in Meghalaya" loading="lazy">
-            <div class="card-body">
-              <h3 id="tour-1-title">Meghalaya: Living Roots & Waterfalls — 6 Days</h3>
-              <p>Walk ancient living-root bridges, visit cascading waterfalls, and stay with Khasi homestays.</p>
-              <div class="card-foot">
-                <span class="price">₹24,999</span>
-                <a class="btn" href="#contact">Enquire</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card" role="listitem" aria-labelledby="tour-2-title">
-            <img src="assets/images/tour-arunachal.jpg" alt="Tawang monastery in Arunachal Pradesh" loading="lazy">
-            <div class="card-body">
-              <h3 id="tour-2-title">Tawang & Cultural Highlands — 7 Days</h3>
-              <p>Explore monasteries, high-altitude scenery and unique cultural encounters in Arunachal.</p>
-              <div class="card-foot">
-                <span class="price">₹29,999</span>
-                <a class="btn" href="#contact">Enquire</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card" role="listitem" aria-labelledby="tour-3-title">
-            <img src="assets/images/tour-sikkim.jpg" alt="Mountain lake in Sikkim" loading="lazy">
-            <div class="card-body">
-              <h3 id="tour-3-title">Sikkim Highlights — 5 Days</h3>
-              <p>Lakes, monasteries, mountain cuisine and scenic drives through the Himalaya foothills.</p>
-              <div class="card-foot">
-                <span class="price">₹19,999</span>
-                <a class="btn" href="#contact">Enquire</a>
-              </div>
-            </div>
-          </article>
+        <div class="breakdown" id="breakdown" style="margin-top:1rem;">
+          <p>Base price: <span id="basePrice">—</span></p>
+          <p>Taxes (GST 5%): <span id="taxes">—</span></p>
+          <p>Group discount: <span id="discount">—</span></p>
+          <p><strong>Total: <span id="total">—</span></strong></p>
         </div>
+
+        <div style="margin-top:1rem;">
+          <button class="btn" id="addToBooking">Add to booking</button>
+        </div>
+
+        <p class="muted" style="margin-top:0.75rem">Notes: Taxes are illustrative. Final price sent with booking confirmation. For online payments integrate Stripe/PayPal — see README.</p>
       </div>
     </section>
 
-    <section id="about" class="section alt">
-      <div class="wrap two-col">
-        <div>
-          <h2>About Northeast Explorer</h2>
-          <p>We design small-group journeys (max 12) around nature, culture and community. We partner with local guides and homestays to ensure your trip benefits local people and preserves cultural integrity.</p>
-          <ul class="features" aria-hidden="false">
-            <li>Small groups — immersive experiences</li>
-            <li>Local guides & homestays</li>
-            <li>Responsible travel & carbon-aware planning</li>
-          </ul>
-        </div>
-        <div class="feature-image">
-          <img src="assets/images/about.jpg" alt="Local guide showing travellers a village" loading="lazy">
-        </div>
+    <section id="destinations" class="container cards" style="margin-top:2rem;">
+      <h2>Featured Destinations</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=60" alt="Mountains"/>
+          <h3>Mountain Retreats</h3>
+          <p>Hiking-friendly routes and homestays for a peaceful escape.</p>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=60" alt="Tea gardens"/>
+          <h3>Tea Garden Stays</h3>
+          <p>Experience local life in tea estates and small villages.</p>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1519817650390-64a93db511aa?w=800&q=60" alt="Rivers"/>
+          <h3>River & Valley Tours</h3>
+          <p>Easy paced itineraries along scenic river valleys.</p>
+        </article>
       </div>
     </section>
 
-    <section id="reviews" class="section">
-      <div class="wrap">
-        <h2>Traveller Reviews</h2>
-        <div class="reviews">
-          <blockquote>
-            "An unforgettable journey — excellent guides and immersive experiences." <cite>— Asha, Kolkata</cite>
-          </blockquote>
-          <blockquote>
-            "We loved the local homestays and carefully planned itinerary." <cite>— Tom, UK</cite>
-          </blockquote>
+    <section id="booking" class="container booking" style="margin-top:2rem;">
+      <h2>Request a Booking / Enquire</h2>
+      <form id="bookingForm" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+        <input type="hidden" name="form-name" value="booking" />
+        <input type="hidden" id="selectedItinInput" name="selected_itinerary" value="" />
+        <input type="hidden" id="calculatedTotalInput" name="calculated_total" value="" />
+        <input type="hidden" name="bot-field" />
+
+        <div class="form-grid">
+          <label>
+            Full name
+            <input id="name" name="name" type="text" required />
+          </label>
+          <label>
+            Email
+            <input id="email" name="email" type="email" required />
+          </label>
+          <label>
+            Phone
+            <input id="phone" name="phone" type="tel" pattern="\+?[0-9\-\s]{7,20}" />
+          </label>
+          <label>
+            Number of travellers
+            <input id="travellersForm" name="travellers" type="number" min="1" value="2" />
+          </label>
+          <label>
+            Preferred dates / Notes
+            <textarea id="notes" name="notes" rows="4"></textarea>
+          </label>
         </div>
-      </div>
+
+        <div class="actions">
+          <button type="submit" class="btn">Send enquiry</button>
+        </div>
+      </form>
+
+      <p class="hint">Form uses Netlify Forms. The selected itinerary and calculated total (estimate) are attached to the form submission.</p>
     </section>
 
-    <section id="contact" class="section alt contact">
-      <div class="wrap form-wrap">
-        <div>
-          <h2>Get in touch</h2>
-          <p>Share your dates or interests — we will craft a personalized itinerary.</p>
-          <form id="contact-form" action="#" method="post" novalidate aria-label="Contact form">
-            <label>
-              <span class="label-text">Name</span>
-              <input type="text" name="name" required aria-required="true" />
-            </label>
-            <label>
-              <span class="label-text">Email</span>
-              <input type="email" name="email" required aria-required="true" />
-            </label>
-            <label>
-              <span class="label-text">Message</span>
-              <textarea name="message" rows="4"></textarea>
-            </label>
-            <div class="form-row">
-              <button class="btn primary" type="submit">Send Inquiry</button>
-              <a class="btn ghost" href="mailto:info@northexplorer.example">Or email us</a>
-            </div>
-          </form>
-        </div>
-
-        <aside class="contact-info" aria-label="Contact information">
-          <h3>Contact</h3>
-          <p><strong>Email:</strong> info@northexplorer.example</p>
-          <p><strong>Phone:</strong> +91 98765 43210</p>
-          <p><strong>Office:</strong> Guwahati, Assam, India</p>
-        </aside>
-      </div>
+    <section id="contact" class="container contact" style="margin-top:2rem;">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:hello@northeastexplorer.example">hello@northeastexplorer.example</a></p>
+      <p>Phone: +91 90000 00000</p>
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="wrap">
-      <p>© <span id="year"></span> Northeast Explorer • Boutique travel across Northeast India</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Northeast Explorer — Built for demo.</p>
     </div>
   </footer>
 
-  <script src="js/script.js" defer></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
